@@ -4,15 +4,15 @@ import java.util.*;
 
 public class BinaryTree implements IBinaryTree{
 	public BinaryNode root;
-//Dada una raíz a la que se le han insertado nodos, se podrá manipular dicho arbol resultante llamando a este constructor
+//Dada una raÃ­z a la que se le han insertado nodos, se podrÃ¡ manipular dicho arbol resultante llamando a este constructor
 	public BinaryTree(BinaryNode root) {
 		this.root=root;
 	}
-//Para crear un árbol desde 0. Esta implementación permite que el árbol tenga nodos con clases de información distintas
+//Para crear un Ã¡rbol desde 0. Esta implementaciÃ³n permite que el Ã¡rbol tenga nodos con clases de informaciÃ³n distintas
 	public BinaryTree(Object ele) {
 		this.root = new BinaryNode(ele);
 	}
-//Devuelve el número total de nodos del árbol	
+//Devuelve el nÃºmero total de nodos del Ã¡rbol	
 	@Override
 	public int size() {
 		int count=0;
@@ -30,12 +30,31 @@ public class BinaryTree implements IBinaryTree{
 		
 		return count ;
 	}
-//Devuelve True si el árbol está vacío
+	
+	
+	/*
+	
+	//ESTO ES MEJORADO (tengo que probarlo pero estoy segura de que funciona)
+	private int tam(BinaryNode left, BinaryNode right) {
+        
+		int count = 1;
+		if (left != null) {
+			count += tam(left.getLeft(), left.getRight());
+		}
+		if (right != null) {
+			count += tam(right.getLeft(), right.getRight());
+		}
+		return count;
+	}
+	*/
+	
+	
+//Devuelve True si el Ã¡rbol estÃ¡ vacÃ­o
 	@Override
 	public boolean isEmpty() {
 		return this.root==null;
 	}
-//Devuelve la raíz del árbol
+//Devuelve la raÃ­z del Ã¡rbol
 	@Override
 	public BinaryNode root() {
 		return this.root;
@@ -59,7 +78,7 @@ public class BinaryTree implements IBinaryTree{
 		}
 		return bn;
 	}
-//Devuelve una colección con los hijos de un nodo dado
+//Devuelve una colecciÃ³n con los hijos de un nodo dado
 	@Override
 	public Collection<BinaryNode> children(BinaryNode node) {
 		Collection<BinaryNode> children= new ArrayList<BinaryNode>();
@@ -80,7 +99,7 @@ public class BinaryTree implements IBinaryTree{
 	public boolean isExternal(BinaryNode node) {
 		return (!hasLeft(node) && !hasRight(node));
 	}
-//Devuelve verdadero si el nodo dado es la raíz del árbol
+//Devuelve verdadero si el nodo dado es la raÃ­z del Ã¡rbol
 	@Override
 	public boolean isRoot(BinaryNode node) {
 		return node==this.root;
@@ -105,8 +124,8 @@ public class BinaryTree implements IBinaryTree{
 	public boolean hasRight(BinaryNode node) {
 		return node.right!=null;
 	}
-//Estos métodos tienen un toString para que se vea que se ha hecho bien
-//Devuelve un iterador sobre los ELEMENTOS del árbol, haciendo el recorrido in order (left,root,right)
+//Estos mÃ©todos tienen un toString para que se vea que se ha hecho bien
+//Devuelve un iterador sobre los ELEMENTOS del Ã¡rbol, haciendo el recorrido in order (left,root,right)
 	@Override
 	public Iterator<Object> elementsInOrder() {
 		Collection<Object> elementsIO = new ArrayList<Object>();
@@ -127,7 +146,7 @@ public class BinaryTree implements IBinaryTree{
 		
 		return elementsIO;
 	}
-//Devuelve un iterador sobre los ELEMENTOS del árbol, haciendo el recorrido PreOrder(root,left,right)
+//Devuelve un iterador sobre los ELEMENTOS del Ã¡rbol, haciendo el recorrido PreOrder(root,left,right)
 	@Override
 	public Iterator<Object> elementsPreOrder() {
 	Collection<Object> elementsPre = new ArrayList<Object>();
@@ -147,7 +166,7 @@ public class BinaryTree implements IBinaryTree{
 		return elementsPre;
 		
 	}
-//Devuelve un iterador sobre los ELEMENTOS del árbol, haciendo el recorrido post order (left, right,root)
+//Devuelve un iterador sobre los ELEMENTOS del Ã¡rbol, haciendo el recorrido post order (left, right,root)
 	@Override
 	public Iterator<Object> elementsPostOrder() {
 		Collection<Object> elementsPost = new ArrayList<Object>();
@@ -169,7 +188,7 @@ public class BinaryTree implements IBinaryTree{
 		return elementsPost;
 		
 	}
-//Devuelve un iterador sobre los NODOS del árbol, en orden
+//Devuelve un iterador sobre los NODOS del Ã¡rbol, en orden
 	@Override
 	public Iterator<BinaryNode> nodesInOrder() {
 		Collection<BinaryNode> nodes = new ArrayList<BinaryNode>();
@@ -189,7 +208,7 @@ public class BinaryTree implements IBinaryTree{
 		
 		return nodes;
 	}
-//Devuelve un iterador sobre los ELEMENTOS del árbol, pre orden
+//Devuelve un iterador sobre los ELEMENTOS del Ã¡rbol, pre orden
 	@Override
 	public Iterator<BinaryNode> nodesPreOrder() {
 		Collection<BinaryNode> nodes = new ArrayList<BinaryNode>();
@@ -210,7 +229,7 @@ public class BinaryTree implements IBinaryTree{
 		
 		return nodes;
 	}
-//Devuelve un iterador sobre los ELEMENTOS del árbol, post orden
+//Devuelve un iterador sobre los ELEMENTOS del Ã¡rbol, post orden
 	@Override
 	public Iterator<BinaryNode> nodesPostOrder() {
 		Collection<BinaryNode> nodes = new ArrayList<BinaryNode>();
@@ -265,7 +284,7 @@ public class BinaryTree implements IBinaryTree{
 		elementsPost=elementsPostOrder(elementsPost,this.root);
 		System.out.println(elementsPost.toString());
 	}
-//Creador de árboles de números enteros
+//Creador de Ã¡rboles de nÃºmeros enteros
 /*
 	public void insertadorDeNodos() {
 		BinaryNode nodo;
@@ -273,7 +292,7 @@ public class BinaryTree implements IBinaryTree{
 		char c;
 		int value;
 		boolean b=true;
-		System.out.println("Teclee 'exit' para parar la inserción");
+		System.out.println("Teclee 'exit' para parar la inserciÃ³n");
 		
 		while(b) {
 			List<Object> l = (List<Object>)elementsInOrder(new ArrayList<Object>(),this.root);
@@ -283,14 +302,14 @@ public class BinaryTree implements IBinaryTree{
 			nodo = nodos.get(io.nextInt());
 			System.out.println("Nuevo valor");
 			value = io.nextInt();
-			System.out.println("Seleccionar posición Left(l) o Right(r)");
+			System.out.println("Seleccionar posiciÃ³n Left(l) o Right(r)");
 			c = io.next().charAt(0);
 			switch(c) {
 			case 'l': insertLeft(nodo,value);
 					  break;
 			case 'r': insertRight(nodo,value);
 					  break;
-			default: System.out.println("No se insertó nada, saliendo...");
+			default: System.out.println("No se insertÃ³ nada, saliendo...");
 					b=false;
 					 break;
 			}
