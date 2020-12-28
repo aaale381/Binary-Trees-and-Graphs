@@ -30,6 +30,20 @@ public class BinaryTree implements IBinaryTree{
 		
 		return count ;
 	}
+	/*
+	    private int tam(BinaryNode left, BinaryNode right) {
+        int count = 1;
+        if (left != null) {
+            count += tam(left.getLeft(), left.getRight());
+        }
+        if (right != null) {
+            count += tam(right.getLeft(), right.getRight());
+        }
+        return count;
+    }
+	*/
+	
+	
 //Devuelve True si el árbol está vacío
 	@Override
 	public boolean isEmpty() {
